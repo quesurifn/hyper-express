@@ -76,6 +76,20 @@ export class Server extends Router {
     publish(topic: string, message: SendableData, is_binary?: boolean, compress?: boolean): boolean;
 
     /**
+     * Resets the router's stack for dynamic reloading
+     */
+
+    deregister_routes(): void;
+
+    /**
+     * Resets the middleware stack for dynamic reloading
+     */
+
+    deregister_middleware(): void;
+
+
+
+    /**
      * Returns the number of subscribers to a topic across all WebSocket connections on this Server instance.
      *
      * @param {String} topic

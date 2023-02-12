@@ -1,4 +1,12 @@
 # HyperExpress: High Performance Node.js Webserver
+
+## Fork Notes:
+
+**Changes in this fork**
+
+- This fork enables the ability to deregister routes while the server is running for dynamic processing
+- Routed is now an instance of event emitter for event driven applications
+
 #### Powered by [`uWebSockets.js`](https://github.com/uNetworking/uWebSockets.js/)
 
 <div align="left">

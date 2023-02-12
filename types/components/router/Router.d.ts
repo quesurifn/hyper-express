@@ -1,4 +1,5 @@
 import { ReadableOptions } from 'stream';
+import { EventEmitter } from 'events';
 import { Request } from '../http/Request';
 import { Response } from '../http/Response';
 import { Websocket } from '../ws/Websocket';
@@ -34,7 +35,7 @@ export interface MiddlewareRecord {
     middleware: MiddlewareHandler;
 }
 
-export class Router {
+export class Router extends EventEmitter {
     constructor();
 
     /**

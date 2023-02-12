@@ -1,4 +1,5 @@
 'use strict';
+const { EventEmitter } = require('stream');
 const { merge_relative_paths } = require('../../shared/operators.js');
 
 /**
@@ -13,7 +14,7 @@ const { merge_relative_paths } = require('../../shared/operators.js');
  * @typedef {function(Request, Response, Function):any|Promise<any>} MiddlewareHandler
  */
 
-class Router {
+class Router extends EventEmitter {
     #is_app = false;
     #subscribers = [];
     #records = {
@@ -24,6 +25,19 @@ class Router {
     constructor() {
         // Determine if Router is extended thus a Server instance
         this.#is_app = this.constructor.name === 'Server';
+    }
+    /**
+     * Deregisters routes to enable aegis hot reloading
+     * 
+     * @private
+     * @returns {void}
+     */
+
+    deregister_routes() {
+        this.#records = {
+            routes: [],
+            middlewares: []
+        }
     }
 
     /**

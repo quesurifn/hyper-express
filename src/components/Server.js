@@ -302,7 +302,7 @@ class Server extends Router {
                 // Overwrite the upgrade route that exists from WebsocketRoute with this custom route
                 this.#routes[method][pattern] = route;
 
-                // Assign route to companion WebsocketRoute
+                // Assign route to companion WebsocketRouxte
                 const companion = this.#routes['ws'][pattern];
                 if (companion) companion._set_upgrade_route(route);
                 break;
@@ -463,6 +463,34 @@ class Server extends Router {
      */
     get middlewares() {
         return this.#middlewares;
+    }
+
+    /**
+     * Deregisters routes for Aegis reload
+     * 
+     * @returns {void}
+    */
+
+    deregister_routes() {
+        this.#routes = {
+            any: {},
+            get: {},
+            post: {},
+            del: {},
+            head: {},
+            options: {},
+            patch: {},
+            put: {},
+            trace: {},
+            upgrade: {},
+            ws: {},
+        }
+    }
+
+    deregister_middleware() {
+        this.#middlewares = {
+            '/': [], 
+        };
     }
 }
 
