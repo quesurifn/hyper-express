@@ -1,5 +1,4 @@
-import { ReadableOptions } from 'stream';
-import { EventEmitter } from 'events';
+import { ReadableOptions, EventEmitter } from 'stream';
 import { Request } from '../http/Request';
 import { Response } from '../http/Response';
 import { Websocket } from '../ws/Websocket';
