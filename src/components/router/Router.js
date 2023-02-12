@@ -23,6 +23,7 @@ class Router extends EventEmitter {
     };
 
     constructor() {
+        super();
         // Determine if Router is extended thus a Server instance
         this.#is_app = this.constructor.name === 'Server';
     }
